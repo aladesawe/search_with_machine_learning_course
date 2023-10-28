@@ -6,14 +6,18 @@ from xgboost import plot_importance, plot_tree
 '''
 Implement an XGBoost training function.  Called from utilities/xgb_utils.py.
 
-This should be verey similar to the how training is done in the LTR toy program.
+This should be very similar to the how training is done in the LTR toy program.
 
 :param str xgb_train_data: The file path to the training data you should train with
 :param int num_rounds: The number of rounds the training process should undertake before terminating.
 :param dictionary xgb_params The XGBoost configuration parameters, such as the objective function, e.g. {'objective': 'reg:logistic'} 
 '''
 def train(xgb_train_data, num_rounds=5, xgb_params=None ):
-    print("IMPLEMENT ME: xgb train")
+    xtrain = xgd.DMatrix(xgb_train_data)
+    if not xgd_params:
+        print("xgb_params was None")
+        xgd_params = {'max_depth': 5,  'silent': 1, 'objective': 'reg:logistic'}
+    bst = xgd.train(xgd_params, dtrain, num_rounds)
 
 ##### Step 3.b:
 '''
